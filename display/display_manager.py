@@ -21,7 +21,7 @@ class DisplayManager:
             spi,
             cs_pin = cs_pin,
             dc_pin = dc_pin,
-            rst_pin = rst_pin
+            rst_pin = rst_pin,
             busy_pin = busy_pin 
         )
         
@@ -39,4 +39,14 @@ class DisplayManager:
         
     def draw_rect(self, x, y, w, h, filled=False):
         if filled:
-            self._display.fill_rect(x, y, w, h, label, text_x_offset=4, text_y_offset=4)
+            self._display.fill_rect(x, y, w, h, self._black)
+        else:
+            self._display.rect(x, y, w, h, self._black)
+            
+    
+    def draw_selection_highlight(self, x, y, w, h, label, text_x_offset = 4, text_y_offset = 4):
+        self.draw_rect(x, y, w, h, filled=True)
+        self.draw_text(x + text_x_offset, y + text_y_offset, label, inverted=True)
+        
+    def show(self):
+        self._display.display

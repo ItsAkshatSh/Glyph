@@ -35,36 +35,36 @@ class ButtonManager:
         self._press_started_at = {name: None for name in self._names}
         self._long_press_fired = {name: False for name in self._names}
         
-        def update(self):
+    def update(self):
             
-            events = []
-            now = time.monotonic()
+        events = []
+        now = time.monotonic()
             
-            while True:
-                raw_event = self._keys.events.get()
-                if raw_event is None:
-                    break
+        while True:
+            raw_event = self._keys.events.get()
+            if raw_event is None:
+                break
                 
-                name = self._names[raw_event.key_number]
+            name = self._names[raw_event.key_number]
                 
-                if raw_event.pressed:
-                    self._press_started_at[name] = now
-                    self._long_press_fired[name] = False
-                    events.append(ButtonEvent(name, PRESSED))
+            if raw_event.pressed:
+                self._press_started_at[name] = now
+                self._long_press_fired[name] = False
+                events.append(ButtonEvent(name, PRESSED))
                 
-                else:
-                    self._press_started_at[name] = None
-                    events.append(ButtonEvent(name, RELEASED))
+            else:
+                self._press_started_at[name] = None
+                events.append(ButtonEvent(name, RELEASED))
                     
-            long_press_seconds = config.BUTTON_LONG_PRESS_MS / 1000
-            for name in self._names:
-                started = self._press_started_at[name]
-                if started is not None and not self._long_press_fired[name]:
-                    if (now - started) >= long_press_seconds:
-                        self._long_press_fired[name] = True
-                        events.append(ButtonEvent(name, LONG_PRESSED))
+        long_press_seconds = config.BUTTON_LONG_PRESS_MS / 1000
+        for name in self._names:
+            started = self._press_started_at[name]
+            if started is not None and not self._long_press_fired[name]:
+                if (now - started) >= long_press_seconds:
+                    self._long_press_fired[name] = True
+                    events.append(ButtonEvent(name, LONG_PRESSED))
                         
-            return events
+        return events
         
         def deinit(self):
             self._keys.deint()
