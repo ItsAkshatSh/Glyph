@@ -53,7 +53,7 @@ want to work on this? head to /hardware
 <img width="60%" height="60%" alt="image" src="https://github.com/ItsAkshatSh/Glyph/blob/main/assets/PCB3D.png?raw=true" />
 </div>
 
-View the 3D PCB on OnShape [here!](https://cad.onshape.com/documents/2ada56df9e2c89778f5abab2/w/117df8fbf0d848a4ffec5e1d/e/edb56eeac649d6d1847bad36?renderMode=0&uiState=6a58a5508228b89c97037c87)
+View the 3D PCB on OnShape [here!](https://cad.onshape.com/documents/d64ed7eb841ee75c4def5666/w/2cc0872b26a180301c84aaf9/e/3cf4c1ecd7b5595a3ff16309?renderMode=0&uiState=6a5c5e145c6f284beb5c3f25)
 
 </div>
 
